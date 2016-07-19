@@ -33,7 +33,7 @@ class Split extends Component {
     };
     // ajax:
     $.post({
-      url: 'http://localhost:8080/split',
+      url: 'http://localhost:8080/api/split',
       data,
       dataType: 'json',
       success: function (data) {

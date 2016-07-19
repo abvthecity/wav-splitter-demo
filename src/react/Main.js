@@ -49,7 +49,7 @@ class Main extends Component {
         <Audio src={this.state.file} />
         <Split onSubmit={this.splitFile} fid={this.state.id} />
         <ul>{this.state.pieces.map(function (item, i) {
-          return (<li>{item.start} - {item.end}: <Audio src={item.file}/></li>);
+          return (<li key={i}>{item.start} - {item.end}: <Audio src={item.file}/> — dominant: {item.dominant}</li>);
         })}</ul>
       </div>);
     }

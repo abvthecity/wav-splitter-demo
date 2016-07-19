@@ -13,7 +13,7 @@ class Upload extends Component {
     e.preventDefault();
     var data = new FormData(this.refs.audioform);
     $.post({
-      url: 'http://localhost:8080/upload',
+      url: 'http://localhost:8080/api/upload',
       data: data,
       cache: false,
       dataType: 'json',

@@ -1,6 +1,12 @@
 import React from 'react';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+// import { createHistory } from 'history';
 import { render } from 'react-dom';
 
-import Main from './react/Main';
+import Main from './react/Main'
 
-render(<Main />, document.getElementById('app'));
+render((
+  <Router history={hashHistory}>
+    <Route path='/' component={Main} />
+  </Router>
+), document.getElementById('app'));
