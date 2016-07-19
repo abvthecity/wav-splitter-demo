@@ -16,5 +16,4 @@ files = writewave(dest, sliced)
 
 # output system file
 fn = files[0]
-os.path.abspath(fn)
-return files[0]
+print os.path.abspath(fn)

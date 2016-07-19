@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class Audio extends Component { 
+const Audio = props => {
 
-  constructor(props) {
-    super(props);
-  }
+  var { src } = props;
 
-  render() {
-    return ();
-  }
+  return (
+    <audio controls>
+      <source src={src} type='audio/wav' />
+    </audio>
+  );
 
 }
 

@@ -12,7 +12,7 @@ function slicer(src, dest, start, end, cb) {
 
   PythonShell.run('slicer.py', options, function (err, results) {
     if (err) throw err;
-    cb(results);
+    cb(results[0]);
   });
 }
 

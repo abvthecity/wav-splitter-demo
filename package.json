@@ -4,7 +4,10 @@
   "description": "Wav splitter demo written using Node.js, React, and d3.",
   "main": "server/index.js",
   "scripts": {
-    "test": "npm run start"
+    "test": "npm run start",
+    "start": "nodemon server/index.js",
+    "build": "gulp",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -46,6 +49,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "gulp": "^3.9.1",
-    "gulp-rename": "^1.2.2"
+    "gulp-rename": "^1.2.2",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

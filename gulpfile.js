@@ -1,7 +1,8 @@
 var gulp = require('gulp');
 var rename = require('gulp-rename');
+var source = require('vinyl-source-stream');
 var browserify = require('browserify');
-var babelify = require('bablify');
+var babelify = require('babelify');
 
 var src = './src/';
 var dest = './dist/';

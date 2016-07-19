@@ -4,16 +4,18 @@
 
 // dependencies
 var http = require('http');
+var fs = require('fs');
 var path = require('path');
 var express = require('express');
 var serveStatic = require('serve-static');
 var bodyParser = require('body-parser');
 var shortid = require('shortid');
+var multer = require('multer');
 var _ = require('lodash');
 
 // local dependencies
 var emotion = require('./microservices/getEmotion');
-var slicer = require('./slicer');
+var slicer = require('./microservices/slicer');
 
 // set up
 var app = express();
@@ -22,7 +24,7 @@ var server = http.Server(app);
 // establish middleware
 app.use('/', serveStatic(path.join(__dirname, '..', 'public')));
 app.use('/dist', serveStatic(path.join(__dirname, '..', 'dist')));
-app.use(bodyParser.urlencoded({ extend: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 var upload = multer({ dest: path.join(__dirname, '..', 'public', 'files') });
 
@@ -40,7 +42,7 @@ app.post('/upload', upload.single('audiofile'), function (req, res) {
   var publicFile = '/files/' + path.basename(filename);
   // get emotion data
   emotion(filename, function (emotions, dominant) {
-    res.json({ id, file: publicFile });
+    res.json({ id, file: publicFile, emotions, dominant });
   });
 });
 
@@ -56,9 +58,16 @@ app.post('/split', function (req, res) {
       dest = path.join(__dirname, '..', 'public', 'files', fid, id);
   slicer(src, dest, start, end, function (filename) {
     emotion(filename, function (emotions, dominant) {
-      data[id].sub[id] = { fn: filename, emotion, dominant }
+      data[fid].sub[id] = { fn: filename, emotions, dominant }
       var publicFile = '/files/' + fid + '/' + path.basename(filename);
-      res.json({id: fid, sid: id, file: publicFile, emotion, dominant});
+      res.json({
+        id: fid,
+        sid: id,
+        file: publicFile,
+        start, end,
+        emotions,
+        dominant
+      });
     });
   });
 });

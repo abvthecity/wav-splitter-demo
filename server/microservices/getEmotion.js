@@ -24,7 +24,7 @@ var dummdumm = [{ anger: '0.2380952',
 }];
 
 function getEmotion(filename, cb){
-	request.get({ url + filename, json:true }, function (err, res, body) {
+	request.get({ url: url + filename, json:true }, function (err, res, body) {
     var emotions = [],
         count = 0,
         dominantName = '',
@@ -37,7 +37,7 @@ function getEmotion(filename, cb){
         dominantName = key;
         dominantVal = val;
       }
-      
+
       emotions.push({
         title: key,
         id: key + (++count),
