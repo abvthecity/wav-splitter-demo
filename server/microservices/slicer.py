@@ -13,4 +13,8 @@ end = sys.argv[4]
 rawdata = readwave(src)
 sliced = slicewave_s(rawdata, start, end)
 files = writewave(dest, sliced)
+
+# output system file
+fn = files[0]
+os.path.abspath(fn)
 return files[0]

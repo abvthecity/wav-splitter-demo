@@ -24,11 +24,12 @@ var dummdumm = [{ anger: '0.2380952',
 }];
 
 function getEmotion(filename, cb){
-	request.get({ url, json:true }, function (err, res, body) {
+	request.get({ url + filename, json:true }, function (err, res, body) {
     var emotions = [],
         count = 0,
         dominantName = '',
         dominantVal = 0;
+
     if(!_.isArray(body) || _.isUndefined(body)) body = dummdumm;
 
     _.forEach(body[0], function (val, key) {
@@ -36,16 +37,14 @@ function getEmotion(filename, cb){
         dominantName = key;
         dominantVal = val;
       }
-
-      var d = {
+      
+      emotions.push({
         title: key,
         id: key + (++count),
         confidence: _.ceil(val * 100),
         color: colors[key],
         desc: '',
-      };
-
-      emotions.push(d);
+      });
     });
 
     cb(emotions, dominantName);
