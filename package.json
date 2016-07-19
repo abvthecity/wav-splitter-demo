@@ -1,0 +1,51 @@
+{
+  "name": "wav-splitter-demo",
+  "version": "1.0.0",
+  "description": "Wav splitter demo written using Node.js, React, and d3.",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ninjiangstar/wav-splitter-demo.git"
+  },
+  "keywords": [
+    "wav",
+    "split",
+    "node",
+    "react",
+    "d3",
+    "demo"
+  ],
+  "author": "Andrew Jiang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ninjiangstar/wav-splitter-demo/issues"
+  },
+  "homepage": "https://github.com/ninjiangstar/wav-splitter-demo#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "d3": "^4.1.1",
+    "express": "^4.14.0",
+    "jquery": "^3.1.0",
+    "lodash": "^4.13.1",
+    "multer": "^1.1.0",
+    "path": "^0.12.7",
+    "python-shell": "^0.4.0",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "request": "^2.73.0",
+    "serve-static": "^1.11.1",
+    "shortid": "^2.2.6"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2"
+  }
+}
